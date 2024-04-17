@@ -13,7 +13,7 @@ const navigate = useNavigate();
 const HandleSubmitUser=e=>{
     e.preventDefault();
     if(email){
-        axios.post('https://server-7ujm.onrender.com/login',{email,password},{withCredentials: true})
+        axios.post('http://server-7ujm.onrender.com/login',{email,password},{withCredentials: true})
         .then((response)=>{
             console.log(response)
             thisUser.setInfo(
