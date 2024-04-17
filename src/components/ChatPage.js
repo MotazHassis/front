@@ -19,14 +19,14 @@ export default () => {
     // console.log(thisuser)
     const [newsocket, setNewSocket] = useState(null);
     const { id } = useParams()
-    const socket = io('http://localhost:8000',{withCredentials: true});
+    const socket = io('https://server-7ujm.onrender.com',{withCredentials: true});
     const updatemessages = updatemes => {
         setAllmessages(updatemes)
     }
     const scrollRef = React.useRef(null);
     const bottomMessages = React.useRef(null)
     const bringAllmessages=async()=>{
-        await axios.get('http://localhost:8000/allchat',{withCredentials: true})
+        await axios.get('https://server-7ujm.onrender.com/allchat',{withCredentials: true})
                     .then(res => {
         
                         setAllmessages(res.data)
@@ -67,7 +67,7 @@ export default () => {
 
     },)
     const HandleSend=async (id,thismessage)=>{
-        await axios.post('http://localhost:8000/chat', { userid: id, messageContent: thismessage },{withCredentials: true})
+        await axios.post('https://server-7ujm.onrender.com/chat', { userid: id, messageContent: thismessage },{withCredentials: true})
         .then(res => {
             socket.emit('sendMessage', () => console.log('message updated'));
         })
@@ -82,7 +82,7 @@ export default () => {
 
     }
     const handleLogout =async ()=>{
-        await axios.get('http://localhost:8000/logout')
+        await axios.get('https://server-7ujm.onrender.com/logout')
             .then(res => {console.error(' logout done'
             )
             navigate('/')
